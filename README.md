@@ -1,104 +1,87 @@
-# Network Scanner
+🌐 Network Scanner 🔍
 
-A command-line tool for analyzing hosts on a network using various scanning techniques including ICMP echo requests, TCP port scanning, and ARP scanning. This tool is designed for network administrators and security professionals to assess network configurations and identify potential vulnerabilities.
+A Python-based Network Scanner ⚡ that helps network administrators 👨‍💻, ethical hackers 🕵️‍♂️, and security professionals 🛡️ discover hosts, analyze network configurations, and detect potential vulnerabilities.
 
-## Features
+This tool leverages Scapy 🐍 for packet crafting and supports multiple scanning techniques including ICMP, TCP, and ARP. Whether you’re checking availability, finding open ports, or mapping devices on a subnet, this scanner is built to deliver fast ⚡ and reliable results.
 
--   **ICMP Echo Request (Ping) Scanning**: Quickly check the availability of hosts.
--   **TCP Port Scanning**: Identify open ports and services running on a host.
--   **ARP Network Scanning**: Discover devices on a local network.
--   **Configurable Scan Types and Timeouts**: Customize scans to suit your needs.
--   **Support for Port Ranges**: Scan specific ports or entire ranges.
--   **Detailed Scan Results Output**: Get comprehensive information about each scan.
+✨ Features
 
-## Requirements
+✅ ICMP Echo Request (Ping) Scanning 📡 – Quickly check if hosts are alive
+✅ TCP Port Scanning 🔌 – Identify open ports and running services
+✅ ARP Network Scanning 🖧 – Discover devices on local networks
+✅ Configurable Scan Types & Timeouts 🎛️ – Full flexibility for precise scans
+✅ Port Range Support 🎯 – Scan single ports, lists, or ranges (1–65535)
+✅ Detailed Scan Results 📑 – Clear IP + MAC mapping for each device
 
--   **Python 3.6 or higher**: Ensure you have the correct version of Python installed.
--   **Scapy 2.5.0 or higher**: Required for packet crafting and network interactions.
--   **Root/Administrator Privileges**: Necessary for raw socket operations.
+📦 Requirements
 
-## Installation
+🐍 Python 3.6+
 
-1. **Clone the Repository**:
+📡 Scapy 2.5.0+ (for packet manipulation)
 
-```bash
+🔑 Root/Admin Privileges (required for raw socket operations)
+
+⚙️ Installation
+
+Clone the repo and install dependencies:
+
 git clone https://github.com/yourusername/network-scanner.git
 cd network-scanner
-```
-
-2. **Install Dependencies**:
-
-```bash
 pip install -r requirements.txt
-```
 
-## Usage
+🚀 Usage
 
-Basic usage:
+Run the scanner from the command line:
 
-```bash
-python src/main.py <target> [options]
-```
+python main.py -ip <target>
 
-### Examples
+🔍 Examples
 
-1. **Scan a Single Host with All Scan Types**:
+1️⃣ Scan a single host
 
-```bash
-python src/main.py 192.168.1.1
-```
+python main.py -ip 192.168.1.1
 
-2. **Perform Only ICMP Scan**:
 
-```bash
+2️⃣ Scan a subnet using ARP
+
+python main.py -ip 192.168.1.0/24
+
+
+3️⃣ Check only with ICMP
+
 python src/main.py 192.168.1.1 -t icmp
-```
 
-3. **Scan Specific Ports**:
 
-```bash
+4️⃣ Port scanning specific services
+
 python src/main.py 192.168.1.1 -p 80,443,8080
-```
 
-4. **Scan a Port Range**:
 
-```bash
+5️⃣ Port range scanning
+
 python src/main.py 192.168.1.1 -p 1-1000
-```
 
-5. **Scan a Network Subnet**:
-
-```bash
-python src/main.py 192.168.1.0/24 -t arp
-```
-
-### Command Line Options
-
--   `target`: Target IP address or network (required)
--   `-t, --type`: Type of scan to perform (choices: all, icmp, tcp, arp; default: all)
--   `-p, --ports`: Ports to scan (e.g., 80,443 or 1-1000)
--   `-T, --timeout`: Timeout in seconds for each scan (default: 2)
-
-## Project Structure
-
-```
+📂 Project Structure
 network-scanner/
 ├── src/
 │   ├── main.py         # Command-line interface
 │   └── scanner.py      # Core scanning functionality
-├── tests/              # Test files
+├── tests/              # Unit tests
 ├── docs/               # Documentation
 ├── requirements.txt    # Project dependencies
-└── README.md           # Project documentation
-```
+├── requirements-dev.txt# Dev/test dependencies
+├── setup.py            # Package setup
+└── README.md           # Documentation
 
-## Security Considerations
+⚠️ Security Considerations
 
--   **Intrusive Nature**: This tool performs network scanning which may be considered intrusive.
--   **Permission**: Use only on networks you have permission to scan.
--   **Network Restrictions**: Some networks may block ICMP or ARP requests.
--   **Privileges**: Running the tool requires elevated privileges.
+⚡ Intrusive Nature – Network scanning may be flagged as suspicious or intrusive.
+🔒 Permissions – Use ONLY on networks you own or have explicit authorization to scan.
+🚫 Restrictions – Some firewalls and routers may block ICMP, TCP, or ARP traffic.
+🔑 Privileges Required – Running requires root/administrator rights.
 
-## License
+🛡️ License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+📜 This project is licensed under the MIT License – feel free to use, modify, and share with proper credit.
+
+🔥 With this scanner, you get a lightweight yet powerful tool to quickly map out your network and strengthen your security posture.
